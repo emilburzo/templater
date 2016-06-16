@@ -25,7 +25,7 @@
                                 </b:FormGroup>
 
                                 <b:FormGroup>
-                                    <b:FormLabel for="formSeparator">Input line separator</b:FormLabel>
+                                    <b:FormLabel for="formSeparator">Input data column separator</b:FormLabel>
                                     <b:TextBox b:id="formSeparator" ui:field="fieldSeparator" tabIndex="3"
                                                autoComplete="false"/>
                                 </b:FormGroup>
