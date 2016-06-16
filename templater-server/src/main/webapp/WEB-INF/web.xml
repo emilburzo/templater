@@ -4,7 +4,7 @@
     <!-- Servlets -->
     <servlet>
         <servlet-name>appServlet</servlet-name>
-        <servlet-class>com.emilburzo.templater.AppServiceImpl</servlet-class>
+        <servlet-class>com.emilburzo.templater.rpc.AppServiceImpl</servlet-class>
     </servlet>
 
     <servlet-mapping>

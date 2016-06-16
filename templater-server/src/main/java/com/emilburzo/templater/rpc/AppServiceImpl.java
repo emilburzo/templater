@@ -1,14 +1,29 @@
-package com.emilburzo.templater;
+package com.emilburzo.templater.rpc;
 
 import com.emilburzo.templater.pojo.TemplateReqRPC;
 import com.emilburzo.templater.pojo.TemplateRespRPC;
-import com.emilburzo.templater.rpc.AppService;
+import com.emilburzo.templater.transformer.*;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The server side implementation of the RPC service.
  */
 public class AppServiceImpl extends RemoteServiceServlet implements AppService {
+
+    private static final List<AbstractTransformer> transformers = new ArrayList<>();
+
+    // todo load dynamically using reflection?
+    static {
+        transformers.add(new BasicTransformer());
+        transformers.add(new UppercaseTransformer());
+        transformers.add(new LowercaseTransformer());
+        transformers.add(new TitlecaseTransformer());
+        transformers.add(new ReverseTransformer());
+        transformers.add(new SwapcaseTransformer());
+    }
 
     @Override
     public TemplateRespRPC process(TemplateReqRPC rpc) {
@@ -33,18 +48,29 @@ public class AppServiceImpl extends RemoteServiceServlet implements AppService {
                 for (int i = 0; i < args.length; i++) {
                     String arg = args[i];
 
-                    tmp = tmp.replaceAll("@" + i + "@", arg);
+                    tmp = transform(tmp, arg, i);
                 }
 
                 result += tmp;
             } else {
                 // no separator, replace the template placeholder with the whole line
-                result += rpc.template.replaceAll("@0@", inputLine);
+                result += transform(rpc.template, inputLine, 0);
             }
 
             result += "\n";
         }
 
         return new TemplateRespRPC(result);
+    }
+
+    private String transform(String body, String arg, int i) {
+        String result = body;
+
+        // apply all transformers
+        for (AbstractTransformer transformer : transformers) {
+            result = transformer.transform(result, arg, i);
+        }
+
+        return result;
     }
 }
