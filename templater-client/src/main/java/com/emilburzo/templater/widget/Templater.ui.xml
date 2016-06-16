@@ -1,0 +1,54 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:b="urn:import:org.gwtbootstrap3.client.ui"
+    >
+
+    <b:Container fluid="true">
+        <b:Row>
+            <b:Column size="XS_12,SM_10,MD_8,LG_8" offset="XS_0,SM_1,MD_2,LG_2">
+                <b:Panel type="PRIMARY">
+                    <b:PanelHeader>
+                        <b:Heading size="H3" text='The Templater'/>
+                    </b:PanelHeader>
+                    <b:PanelBody>
+                        <b:Form>
+                            <b:FieldSet>
+                                <b:FormGroup>
+                                    <b:FormLabel for="formInputData">Input data</b:FormLabel>
+                                    <b:TextArea b:id="formInputData" ui:field="fieldInputData" tabIndex="1"
+                                                autoComplete="false" visibleLines="7"/>
+                                </b:FormGroup>
+
+                                <b:FormGroup>
+                                    <b:FormLabel for="formTemplate">Template</b:FormLabel>
+                                    <b:TextArea b:id="formTemplate" ui:field="fieldTemplate" tabIndex="2"
+                                                autoComplete="false" visibleLines="7"/>
+                                </b:FormGroup>
+
+                                <b:FormGroup>
+                                    <b:FormLabel for="formSeparator">Input line separator</b:FormLabel>
+                                    <b:TextBox b:id="formSeparator" ui:field="fieldSeparator" tabIndex="3"
+                                               autoComplete="false"/>
+                                </b:FormGroup>
+
+                                <b:Button type="PRIMARY" ui:field="btnGo" tabIndex="4">Go</b:Button>
+                            </b:FieldSet>
+                        </b:Form>
+
+                    </b:PanelBody>
+                </b:Panel>
+            </b:Column>
+        </b:Row>
+        <b:Row>
+            <b:Column size="XS_12,SM_12,MD_10,LG_10" offset="XS_0,SM_0,MD_1,LG_1">
+                <b:Panel type="SUCCESS">
+                    <b:PanelHeader>
+                        <b:Heading size="H3" text='Result'/>
+                    </b:PanelHeader>
+                    <b:PanelBody>
+                        <b:TextArea ui:field="fieldResult" autoComplete="false" visibleLines="15"/>
+                    </b:PanelBody>
+                </b:Panel>
+            </b:Column>
+        </b:Row>
+    </b:Container>
+</ui:UiBinder>

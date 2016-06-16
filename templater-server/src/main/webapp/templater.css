@@ -1,0 +1,15 @@
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+input {
+    font-family: 'Roboto Mono', monospace !important;
+}
+
+textarea {
+    font-family: 'Roboto Mono', monospace !important;
+}
+
+#content {
+    padding-top: 20px;
+}
