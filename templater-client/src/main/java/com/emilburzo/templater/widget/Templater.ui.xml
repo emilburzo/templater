@@ -1,5 +1,5 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
-             xmlns:b="urn:import:org.gwtbootstrap3.client.ui"
+             xmlns:b="urn:import:org.gwtbootstrap3.client.ui" xmlns:g="urn:import:com.google.gwt.user.client.ui"
     >
 
     <b:Container fluid="true">
@@ -22,30 +22,88 @@
                                     <b:FormLabel for="formTemplate">Template</b:FormLabel>
                                     <b:TextArea b:id="formTemplate" ui:field="fieldTemplate" tabIndex="2"
                                                 autoComplete="false" visibleLines="7"/>
+
+                                    <b:Button type="LINK" dataToggle="COLLAPSE" dataTarget="#collapse"
+                                              text="(syntax)" size="SMALL" pull="NONE"/>
+                                    <b:Collapse b:id="collapse" toggle="false">
+                                        <g:FlowPanel>
+                                            <b:Description horizontal="true">
+                                                <b:DescriptionTitle text="@0@"/>
+                                                <b:DescriptionData
+                                                    text="whole input data line, when there's no separator"/>
+                                            </b:Description>
+
+                                            <b:Description horizontal="true">
+                                                <b:DescriptionTitle text="@0@ @1@ ... @i@"/>
+                                                <b:DescriptionData text="data line tokens, split by separator"/>
+                                            </b:Description>
+
+                                            <b:Description horizontal="true">
+                                                <b:DescriptionTitle text="@upper0@"/>
+                                                <b:DescriptionData text="UPPERCASE"/>
+                                            </b:Description>
+
+                                            <b:Description horizontal="true">
+                                                <b:DescriptionTitle text="@lower0@"/>
+                                                <b:DescriptionData text="lowercase"/>
+                                            </b:Description>
+
+                                            <b:Description horizontal="true">
+                                                <b:DescriptionTitle text="@title0@"/>
+                                                <b:DescriptionData text="Title Case"/>
+                                            </b:Description>
+
+                                            <b:Description horizontal="true">
+                                                <b:DescriptionTitle text="@reverse0@"/>
+                                                <b:DescriptionData text="reverse"/>
+                                            </b:Description>
+
+                                            <b:Description horizontal="true">
+                                                <b:DescriptionTitle text="@swapcase0@"/>
+                                                <b:DescriptionData text="SwApCaSe/sWaPcAsE"/>
+                                            </b:Description>
+
+                                            <b:Description horizontal="true">
+                                                <b:DescriptionTitle text="@num@"/>
+                                                <b:DescriptionData text="line number (index)"/>
+                                            </b:Description>
+
+                                        </g:FlowPanel>
+                                    </b:Collapse>
                                 </b:FormGroup>
 
                                 <b:FormGroup>
-                                    <b:FormLabel for="formSeparator">Input data column separator</b:FormLabel>
+                                    <b:FormLabel for="formSeparator">Input data column separator (optional)
+                                    </b:FormLabel>
                                     <b:TextBox b:id="formSeparator" ui:field="fieldSeparator" tabIndex="3"
                                                autoComplete="false"/>
                                 </b:FormGroup>
-
-                                <b:Button type="PRIMARY" ui:field="btnGo" tabIndex="4">Go</b:Button>
                             </b:FieldSet>
                         </b:Form>
-
                     </b:PanelBody>
+                    <b:PanelFooter>
+                        <b:ButtonGroup>
+                            <b:Button type="DEFAULT" ui:field="btnRandomExample" tabIndex="6">Random example
+                            </b:Button>
+
+                            <b:Button type="DEFAULT" ui:field="btnClear" tabIndex="7">Clear</b:Button>
+                        </b:ButtonGroup>
+
+                        <b:ButtonGroup pull="RIGHT">
+                            <b:Button type="PRIMARY" ui:field="btnGenerate" tabIndex="4">Generate</b:Button>
+                        </b:ButtonGroup>
+                    </b:PanelFooter>
                 </b:Panel>
             </b:Column>
         </b:Row>
-        <b:Row>
+        <b:Row ui:field="rowResult">
             <b:Column size="XS_12,SM_12,MD_10,LG_10" offset="XS_0,SM_0,MD_1,LG_1">
                 <b:Panel type="SUCCESS">
                     <b:PanelHeader>
                         <b:Heading size="H3" text='Result'/>
                     </b:PanelHeader>
                     <b:PanelBody>
-                        <b:TextArea ui:field="fieldResult" autoComplete="false" visibleLines="15"/>
+                        <b:TextArea ui:field="fieldResult" autoComplete="false" visibleLines="15" tabIndex="5"/>
                     </b:PanelBody>
                 </b:Panel>
             </b:Column>
