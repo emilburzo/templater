@@ -37,7 +37,19 @@ public class Templater extends SimplePanel {
     public Templater() {
         initUi();
 
+        loadSuggestion();
+
         focusInput();
+    }
+
+    private void loadSuggestion() {
+        // todo have a set of suggestions and load one randomly
+        fieldInputData.setText("john,doe,EMployee,active,secret,bROKENcAMEL\n" +
+                "JANE,dOE, staff,inactive,verysecret,bROKENcAMEL");
+
+        fieldTemplate.setText("INSERT INTO records VALUES ('@n@', '@title0@', '@title1@', (SELECT id FROM types WHERE name = '@lower2@'), '@upper3@', '@reverse4@', '@swapcase5@');");
+
+        fieldSeparator.setText(",");
     }
 
     private void initUi() {

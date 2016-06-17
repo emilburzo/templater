@@ -5,8 +5,8 @@ import org.apache.commons.lang3.StringUtils;
 public class SwapcaseTransformer extends AbstractTransformer {
 
     @Override
-    public String transform(String body, String arg, int i) {
-        return body.replaceAll("@swap" + i + "@", StringUtils.swapCase(arg));
+    public String transform(String body, String arg, int argNumber, int lineNumber) {
+        return body.replaceAll("@swapcase" + argNumber + "@", StringUtils.swapCase(arg));
     }
 
 }

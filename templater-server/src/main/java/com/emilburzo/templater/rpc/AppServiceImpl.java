@@ -23,6 +23,7 @@ public class AppServiceImpl extends RemoteServiceServlet implements AppService {
         transformers.add(new TitlecaseTransformer());
         transformers.add(new ReverseTransformer());
         transformers.add(new SwapcaseTransformer());
+        transformers.add(new LineNumberTransformer());
     }
 
     @Override
@@ -34,41 +35,44 @@ public class AppServiceImpl extends RemoteServiceServlet implements AppService {
         // final result placeholder
         String result = "";
 
+        int line = 0;
         for (String inputLine : inputLines) {
             // ignore blank lines
             if (inputLine.trim().isEmpty()) {
                 continue;
             }
 
-            // if there's a separator, split the line with it
+            // if there's a separator, split the input data line with it
             if (rpc.separator != null && !rpc.separator.trim().isEmpty()) {
-                String[] args = inputLine.split(rpc.separator);
+                String[] args = inputLine.trim().split(rpc.separator);
 
                 String tmp = rpc.template;
                 for (int i = 0; i < args.length; i++) {
-                    String arg = args[i];
+                    String arg = args[i].trim();
 
-                    tmp = transform(tmp, arg, i);
+                    tmp = transform(tmp, arg, i, line);
                 }
 
                 result += tmp;
             } else {
                 // no separator, replace the template placeholder with the whole line
-                result += transform(rpc.template, inputLine, 0);
+                result += transform(rpc.template, inputLine.trim(), 0, line);
             }
 
             result += "\n";
+
+            line++;
         }
 
         return new TemplateRespRPC(result);
     }
 
-    private String transform(String body, String arg, int i) {
+    private String transform(String body, String arg, int argNumber, int lineNumber) {
         String result = body;
 
         // apply all transformers
         for (AbstractTransformer transformer : transformers) {
-            result = transformer.transform(result, arg, i);
+            result = transformer.transform(result, arg, argNumber, lineNumber);
         }
 
         return result;
