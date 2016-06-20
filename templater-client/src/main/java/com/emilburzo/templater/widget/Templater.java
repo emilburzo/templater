@@ -10,6 +10,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.Random;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -74,7 +75,7 @@ public class Templater extends SimplePanel {
         rpc.template = "usermod -s /sbin/nologin @0@";
         rpc.separator = "";
 
-         // nginx
+        // nginx
         rpc = new TemplateReqRPC();
         rpc.inputData = "templater,172.13.1.2,8080\n" +
                 "hnjobs,192.168.1.34,8080\n" +
@@ -135,16 +136,18 @@ public class Templater extends SimplePanel {
 
     @UiHandler("btnClear")
     public void onClear(ClickEvent event) {
-        fieldInputData.clear();
-        fieldTemplate.clear();
-        fieldSeparator.clear();
-        fieldResult.clear();
+        boolean confirm = Window.confirm("Are you sure you want to clear all the fields?");
+
+        if (confirm) {
+            fieldInputData.clear();
+            fieldTemplate.clear();
+            fieldSeparator.clear();
+            fieldResult.clear();
+        }
     }
 
     @UiHandler("btnExample")
-    public void onRandomExample(ClickEvent event) {
-        // todo have a set of suggestions and load one randomly
-
+    public void onExample(ClickEvent event) {
         TemplateReqRPC suggestion = suggestions.get(Random.nextInt(suggestions.size()));
 
         fieldInputData.setText(suggestion.inputData);
