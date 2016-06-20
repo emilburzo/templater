@@ -75,6 +75,8 @@ public class Templater extends SimplePanel {
         rpc.template = "usermod -s /sbin/nologin @0@";
         rpc.separator = "";
 
+        suggestions.add(rpc);
+        
         // nginx
         rpc = new TemplateReqRPC();
         rpc.inputData = "templater,172.13.1.2,8080\n" +
