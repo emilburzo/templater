@@ -4,16 +4,16 @@
 
     <b:Container fluid="true">
         <b:Row>
-            <b:Column size="XS_12,SM_10,MD_8,LG_8" offset="XS_0,SM_1,MD_2,LG_2">
+            <b:Column size="XS_12,SM_12,MD_12,LG_10" offset="XS_0,SM_0,MD_0,LG_1">
                 <b:Panel type="PRIMARY">
                     <b:PanelHeader>
-                        <b:Heading size="H3" text='The Templater'/>
+                        <b:Heading size="H3" text='Input'/>
                     </b:PanelHeader>
                     <b:PanelBody>
                         <b:Form>
                             <b:FieldSet>
                                 <b:FormGroup>
-                                    <b:FormLabel for="formInputData">Input data</b:FormLabel>
+                                    <b:FormLabel for="formInputData">Data</b:FormLabel>
                                     <b:TextArea b:id="formInputData" ui:field="fieldInputData" tabIndex="1"
                                                 autoComplete="false" visibleLines="7"/>
                                 </b:FormGroup>
@@ -74,7 +74,7 @@
                                 </b:FormGroup>
 
                                 <b:FormGroup>
-                                    <b:FormLabel for="formSeparator">Input data column separator (optional)
+                                    <b:FormLabel for="formSeparator">Data token separator (optional)
                                     </b:FormLabel>
                                     <b:TextBox b:id="formSeparator" ui:field="fieldSeparator" tabIndex="3"
                                                autoComplete="false"/>
@@ -84,10 +84,10 @@
                     </b:PanelBody>
                     <b:PanelFooter>
                         <b:ButtonGroup>
-                            <b:Button type="DEFAULT" ui:field="btnRandomExample" tabIndex="6">Random example
+                            <b:Button type="DEFAULT" ui:field="btnExample" tabIndex="6">Example
                             </b:Button>
 
-                            <b:Button type="DEFAULT" ui:field="btnClear" tabIndex="7">Clear</b:Button>
+                            <b:Button type="DANGER" ui:field="btnClear" tabIndex="7">Clear</b:Button>
                         </b:ButtonGroup>
 
                         <b:ButtonGroup pull="RIGHT">
@@ -97,14 +97,14 @@
                 </b:Panel>
             </b:Column>
         </b:Row>
-        <b:Row ui:field="rowResult">
-            <b:Column size="XS_12,SM_12,MD_10,LG_10" offset="XS_0,SM_0,MD_1,LG_1">
+        <b:Row>
+            <b:Column size="XS_12,SM_12,MD_12,LG_10" offset="XS_0,SM_0,MD_0,LG_1">
                 <b:Panel type="SUCCESS">
                     <b:PanelHeader>
-                        <b:Heading size="H3" text='Result'/>
+                        <b:Heading size="H3" text='Output'/>
                     </b:PanelHeader>
                     <b:PanelBody>
-                        <b:TextArea ui:field="fieldResult" autoComplete="false" visibleLines="15" tabIndex="5"/>
+                        <b:TextArea ui:field="fieldResult" autoComplete="false" visibleLines="27" tabIndex="5"/>
                     </b:PanelBody>
                 </b:Panel>
             </b:Column>
