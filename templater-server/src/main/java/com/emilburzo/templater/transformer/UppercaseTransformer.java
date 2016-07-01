@@ -4,7 +4,7 @@ public class UppercaseTransformer extends AbstractTransformer {
 
     @Override
     public String transform(String body, String arg, int argNumber, int lineNumber) {
-        return body.replaceAll("@upper" + argNumber + "@", arg.toUpperCase());
+        return body.replace("@upper" + argNumber + "@", arg.toUpperCase());
     }
 
 }

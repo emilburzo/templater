@@ -76,7 +76,7 @@ public class Templater extends SimplePanel {
         rpc.separator = "";
 
         suggestions.add(rpc);
-        
+
         // nginx
         rpc = new TemplateReqRPC();
         rpc.inputData = "templater,172.13.1.2,8080\n" +

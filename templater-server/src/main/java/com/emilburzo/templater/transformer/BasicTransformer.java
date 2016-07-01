@@ -4,6 +4,6 @@ public class BasicTransformer extends AbstractTransformer {
 
     @Override
     public String transform(String body, String arg, int argNumber, int lineNumber) {
-        return body.replaceAll("@" + argNumber + "@", arg);
+        return body.replace("@" + argNumber + "@", arg);
     }
 }

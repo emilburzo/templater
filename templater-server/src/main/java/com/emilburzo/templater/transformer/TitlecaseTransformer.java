@@ -6,6 +6,6 @@ public class TitlecaseTransformer extends AbstractTransformer {
 
     @Override
     public String transform(String body, String arg, int argNumber, int lineNumber) {
-        return body.replaceAll("@title" + argNumber + "@", WordUtils.capitalizeFully(arg));
+        return body.replace("@title" + argNumber + "@", WordUtils.capitalizeFully(arg));
     }
 }

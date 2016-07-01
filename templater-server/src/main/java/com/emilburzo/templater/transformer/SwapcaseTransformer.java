@@ -6,7 +6,7 @@ public class SwapcaseTransformer extends AbstractTransformer {
 
     @Override
     public String transform(String body, String arg, int argNumber, int lineNumber) {
-        return body.replaceAll("@swapcase" + argNumber + "@", StringUtils.swapCase(arg));
+        return body.replace("@swapcase" + argNumber + "@", StringUtils.swapCase(arg));
     }
 
 }
