@@ -51,6 +51,8 @@ public class Templater extends SimplePanel {
 
         loadSuggestions();
 
+        onExample(null);
+
         focusInput();
     }
 
@@ -117,6 +119,19 @@ public class Templater extends SimplePanel {
                 "    }\n" +
                 "}\n";
         rpc.separator = ",";
+
+        // python
+        rpc = new TemplateReqRPC();
+        rpc.inputData = "command\n" +
+                "conn\n" +
+                "delete\n" +
+                "flushes\n" +
+                "getmore\n" +
+                "insert\n" +
+                "query\n" +
+                "update";
+
+        rpc.template = "print \"@0@.value \",json['{{ invetory_short_name }}']['@0@'].replace('*', '')";
 
         suggestions.add(rpc);
     }
