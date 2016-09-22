@@ -9,7 +9,9 @@ import com.google.gwt.user.client.ui.RootPanel;
  */
 public class App implements EntryPoint {
 
+    private static final String CONTENT_DIV_ID = "content";
+
     public void onModuleLoad() {
-        RootPanel.get("content").add(new Templater());
+        RootPanel.get(CONTENT_DIV_ID).add(new Templater());
     }
 }
