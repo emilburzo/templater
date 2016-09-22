@@ -153,7 +153,7 @@ public class Templater extends SimplePanel {
 
     @UiHandler("btnClear")
     public void onClear(ClickEvent event) {
-        boolean confirm = Window.confirm("Are you sure you want to clear all the fields?");
+        boolean confirm = Window.confirm("Are you sure you want to clear ALL the fields?");
 
         if (confirm) {
             fieldInputData.clear();
