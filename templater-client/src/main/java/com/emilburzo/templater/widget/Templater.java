@@ -51,8 +51,6 @@ public class Templater extends SimplePanel {
 
         loadSuggestions();
 
-        onExample(null);
-
         focusInput();
     }
 
