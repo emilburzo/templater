@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: templater
+  labels:
+    app: templater
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: templater
+  template:
+    metadata:
+      labels:
+        app: templater
+    spec:
+      containers:
+        - name: templater
+          image: emilburzo/templater:latest
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: templater
+  labels:
+    run: templater
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+  selector:
+    app: templater
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: templater
+spec:
+  rules:
+    - host: templater.emilburzo.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: templater
+                port:
+                  number: 8080
