@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: templater
-          image: emilburzo/templater:latest
+          image: emilburzo/templater:5
           ports:
             - containerPort: 8080
 ---
