@@ -1,4 +1,4 @@
-FROM jetty:latest
+FROM jetty:9-jdk8
 
 ADD templater-server/target/templater-server-1.0-SNAPSHOT.war webapps/ROOT.war
 
